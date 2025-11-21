@@ -1,6 +1,6 @@
 import streamlit as st
 from dataset import df
-from graficos import grafico_map_estado, grafico_receita_mensal, grafico_receita_estado, grafico_receita_categoria
+from graficos import grafico_map_estado, grafico_receita_mensal, grafico_receita_estado, grafico_receita_categoria, grafico_receita_vendedores, grafico_vendas_dos_vendedores
 
 st.title('Dashboard de Vendas 🛒')
 st.set_page_config(layout='wide')
@@ -20,3 +20,10 @@ with aba2:
         st.metric('Quantidade de Vendas', format_number(df.shape[0]))
         st.plotly_chart(grafico_receita_mensal, width='stretch')
         st.plotly_chart(grafico_receita_categoria, width='stretch')
+with aba3:
+    coluna1, coluna2 = st.columns(2)
+    with coluna1:
+        st.plotly_chart(grafico_receita_vendedores) # width='stretch'
+    with coluna2:
+        st.plotly_chart(grafico_vendas_dos_vendedores)
+

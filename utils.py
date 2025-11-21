@@ -64,3 +64,7 @@ df_receita_mensal['Mes'] = df_receita_mensal['Data da Compra'].dt.month_name('pt
 # 5. Criar DatAFrame de Receita por Categoria
 df_receita_categoria = df.groupby('Categoria do Produto')[['Preço']].sum().sort_values('Preço', ascending=False)
 # print(df_receita_categoria.head())
+
+# 6. DataFrame Vendedores
+df_vendedores = pd.DataFrame(df.groupby('Vendedor')['Preço'].agg(['sum', 'count']))
+# print(df_vendedores)
